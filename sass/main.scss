@@ -1,8 +1,107 @@
 @font-face {
-    font-family:"fuenteConeria" ;
-    src: url(../fonts/Demo_ConeriaScript_Slanted.ttf);
+    font-family: "coneria";
+    src: url(../fonts/Demo_ConeriaScript.ttf);
 }
+/* variables inicio */
+$fuenteConeria: coneria;
+$colorBtn: tomato; 
+
+/* variables cierre */
+
+/* estilos globales inicio */
+.bg-fondo {
+    background-image: url(../images/fondo\ noe2.jpg);
+}
+
+h2 {
+    font-family: $fuenteConeria;
+    font-weight: bold;
+}
+
+.texto {
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+/* estilos globales cierre */ 
+
+@mixin btn {
+    display: inline-block;
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+.boton {
+    @include btn;
+    color: #000;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #fff;
+    background: $colorBtn;
+}
+
+/* estilos index inicio */
+.tarjetas {
+    gap: 2rem;
+}
+
+/* estilos index cierre */
+
+.titulo {
+    text-align: center;
+    font-size: 3rem;
+    padding: 0.8em 0 .4em;
+}
+
+.galeria {
+    padding-bottom: 3em;
+    padding-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 160px;
+    grid-template-areas:
+        "img1 img1 img2 img3"
+        "img1 img1 img4 img4";
+    gap: 0.8em;
+
+    .galeriaImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .galeriaImagenes1 {
+        grid-area: img4;
+    }
+
+    .galeriaImagenes2 {
+        grid-area: img2;
+    }
+
+    .galeriaImagenes3 {
+        grid-area: img3;
+    }
+
+    .galeriaImagenes4 {
+        grid-area: img1;
+    }
+}
+
+@media (max-width:768px) {
+    .titulo {
+        font-size: 2rem;
+        padding: .8em 0 .4em;
+    }
+    .galeria {
+        display: none;
+    }
+}
+    
+/* estilos comunidad cierre */
+
 #empresas {
+    margin-top: -90px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,7 +115,7 @@
     height: 350px;
     margin: 15px;
 
-    .cara {
+    & .cara {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -26,7 +125,7 @@
         transition: .5s;
     }
 
-    .frontal {
+    & .frontal {
         transform: perspective(600px) rotateY(0deg);
         box-shadow: 0 5px 10px #000;
 
@@ -49,7 +148,7 @@
         }
     }
 
-    .trasera {
+    & .trasera {
         transform: perspective(600px) rotateY(180deg);
         background: rgb(3, 35, 54);
         padding: 15px;
@@ -72,7 +171,6 @@
         }
     }
 }
-
 
 .tarjeta:hover .frontal {
     transform: perspective(600px) rotateY(180deg);
