@@ -180,3 +180,11 @@ h2 {
 .tarjeta:hover .trasera {
     transform: perspective(600px) rotateY(360deg);
 }
+
+/* estilos contactanos */
+@media (max-width:768px) {
+    .imgPastelero{
+        display: none;
+    }
+}
+   
